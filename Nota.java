@@ -25,8 +25,7 @@ public class Nota {
         nota.EntrarNotas();
         // 0.1
         if(nota.ValidarNota(nota.a1, nota.a2, nota.a3) == 1){
-            System.out.print("***SISTEMA ENCERRADO****");
-            System.exit(0);
+            nota.Sair();
         }
         nota.media = nota.CalcMedia(nota.a1, nota.a2);
         nota.status = nota.CalcStatus1(nota.media);
@@ -77,6 +76,10 @@ public class Nota {
     }
     public double CalcMedia(double a1, double a2){return a1 + a2;}
     
+    public void Sair(){
+        System.out.print("***SISTEMA ENCERRADO****");
+        System.exit(0);
+    }
     // 0.2
     public String CalcStatus1(double media){return media >= 6 ? "aprovado" : "reprovado";}
     
@@ -86,8 +89,7 @@ public class Nota {
     // 0.3
     public double SubstituirNota(double a1, double a2, double a3){
         if(this.ValidarNota(a1, a2, a3) == 1){
-            System.out.print("***SISTEMA ENCERRADO****");
-            System.exit(0);
+            this.Sair();
         }
         if(a3 < a2 && a3 < a1){return this.CalcMedia(a1, a2);}
         return a1 >=a2 ? this.CalcMedia(a1, a3): this.CalcMedia(a2, a3) ;
